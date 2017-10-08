@@ -13,26 +13,26 @@ Thereby maximizing efficiency
 
 External Modules used are
 * requests
-	`pip install requests`
-	http/https requests
+	* `pip install requests`
+	* http/https requests
 * BeautifulSoup
-	`pip install beautifulsoup4`
-	html file parsing
+	* `pip install beautifulsoup4`
+	* html file parsing
 
 # Commands
 
 These are the commands you can use to maximize efficiency
 
 * -v
-    for verbose print to console
+    * for verbose print to console
 * -vf filename
-    for logging to filename
+    * for logging to filename
 * -s start_num
-    start downloading from number
-    default is first number (from the first webpage)
+    * start downloading from number
+    * default is first number (from the first webpage)
 * -e end_num
-    stop downloading at number
-    default is last number (till the last webpage) /1/
+    * stop downloading at number
+    * default is last number (till the last webpage) /1/
 
 *Verbose mode (-v) to console is on by default*
 
@@ -45,7 +45,7 @@ Compiling into one single executable exe file
 
 # Run
 
-**Replace <python run.py> with <run.exe>**
+Replace `python run.py` with `run.exe`
 
 * python run.py -s 100 -e 90
 	downloads from the 100th comic till the 90th comic
