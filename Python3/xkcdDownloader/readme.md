@@ -13,10 +13,10 @@ Thereby maximizing efficiency
 
 External Modules used are
 * requests
-	<pip install requests>
+	`pip install requests`
 	http/https requests
 * BeautifulSoup
-	<pip install beautifulsoup4>
+	`pip install beautifulsoup4`
 	html file parsing
 
 # Commands
@@ -41,7 +41,7 @@ These are the commands you can use to maximize efficiency
 
 Compiling into one single executable exe file
 
-'<pyinstaller -F run.py>'
+`pyinstaller -F run.py`
 
 # Run
 
