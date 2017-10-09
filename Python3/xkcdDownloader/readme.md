@@ -42,6 +42,7 @@ These are the commands you can use to maximize efficiency
 Compiling into one single executable exe file
 
 `pip install pyinstaller`
+
 `pyinstaller -F run.py`
 
 # Run

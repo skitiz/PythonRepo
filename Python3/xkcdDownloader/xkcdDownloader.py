@@ -43,6 +43,10 @@ def parse_site(filename):
 
     # get src
     try:
+        # CHANGE, this to regex function search //imgs.xkcd.com/comics/
+        linkImg = re.compile(r'//imgs.xkcd.com/comics/(\w*).png')
+        f_i = linkImg.search(parse_html.getText())
+        logging.critical(f_i)
         find_img = parse_html.select('#comic img')[0].attrs
         img_src = find_img['src']
         logging.debug("image_url: "+img_src)
@@ -69,7 +73,7 @@ def parse_site(filename):
         # img src is the downloadable img src of the curPage
         # prev src points to the url of the previous page
         return img_src, prev_src.strip("/"), num.group(1)
-    except IndexError as e:
+    except Exception as e:
         logging.debug("Comic does not exist")
         return -1, -1, -1
 
@@ -81,16 +85,18 @@ def download_comic(url, num, folder):
     logging.info("Downloading "+pic_name)
 
     # WE get the pic data from here
-    pic_data = requests.get('https:'+url)
-    pic_data.raise_for_status()
+    try:
+        pic_data = requests.get('https:'+url)
+        pic_data.raise_for_status()
 
+        pic_file = open(folder+"/"+str(num)+"."+pic_name, 'wb')
+        pic_file.write(pic_data.content)
+        pic_file.close()
+    except Exception as e:
+        logging.debug("Comic cannot be downloaded")
     # logging.info("Outside download_comic function")
     # return pic_data.content
     # we write this to the fileStream
-
-    pic_file = open(folder+"/"+str(num)+"."+pic_name, 'wb')
-    pic_file.write(pic_data.content)
-    pic_file.close()
 
 
 # joins xkcd.com/<prev_num>
