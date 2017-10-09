@@ -22,15 +22,20 @@ CRITICAL
 # get site and input in filename
 def get_site(url, filename):
     # logging.info("Inside the get_site function")
-    siteData = requests.get(url)
-    siteData.raise_for_status()
+    try:
+        siteData = requests.get(url)
+        siteData.raise_for_status()
 
-    site_file = open(filename, 'wb')
-    for chunk in siteData.iter_content(100000):
-        logging.debug("CHUNKSize: "+str(len(chunk)))
-        site_file.write(chunk)
-    site_file.close()
-    # logging.info("Outside the get_site function")
+        site_file = open(filename, 'wb')
+        for chunk in siteData.iter_content(100000):
+            logging.debug("CHUNKSize: "+str(len(chunk)))
+            site_file.write(chunk)
+        site_file.close()
+        # logging.info("Outside the get_site function")
+        return 1  # Success
+    except Exception:
+        logging.debug("Link not present")
+        return 0  # Failure
 
 
 # read the filename and output
@@ -107,8 +112,11 @@ def site_join(prevUrl):
 # combines both get_site and parse_site functions are returns:
 # parse_site values
 def get_schema(url, filename):
-    get_site(url, filename)
-    return parse_site(filename)
+    site_status = get_site(url, filename)
+    if site_status is 1:
+        return parse_site(filename)
+    else:
+        return -1, -1, -1
 
 
 # NOTE, USE THIS FUNCTION AT YOUR OWN RISK
