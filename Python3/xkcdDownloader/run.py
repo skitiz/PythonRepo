@@ -63,6 +63,7 @@ if '-s' in sys.argv:
 else:
     # start from starting, FIRST
     pic_url, prev_num, pic_num = downloader.get_schema(url, filename)
+    if pic_url is not -1:
         if pic_num not in downloaded:
             downloader.download_comic(pic_url, pic_num, folder)
         else:
