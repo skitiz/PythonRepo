@@ -42,32 +42,36 @@ def parse_site(filename):
                                    'html.parser')
 
     # get src
-    find_img = parse_html.select('#comic img')[0].attrs
-    img_src = find_img['src']
-    logging.debug("image_url: "+img_src)
-    # find the entire information
-    # logging.info(find_img)
+    try:
+        find_img = parse_html.select('#comic img')[0].attrs
+        img_src = find_img['src']
+        logging.debug("image_url: "+img_src)
+        # find the entire information
+        # logging.info(find_img)
 
-    # get previous link
-    find_previous = parse_html.select('a[rel="prev"]')[0].attrs
-    prev_src = find_previous['href']
-    logging.debug("prev_num: "+prev_src)
-    # logging.info(find_previous)
+        # get previous link
+        find_previous = parse_html.select('a[rel="prev"]')[0].attrs
+        prev_src = find_previous['href']
+        logging.debug("prev_num: "+prev_src)
+        # logging.info(find_previous)
 
-    # get Link number
-    # WE might not need this
-    # TODO, CHANGE THIS, it should work for 1, 2, 3, 4, etc digit nums
-    linkNum = re.compile(r'/xkcd.com/(\d*)/')
-    num = linkNum.search(parse_html.getText())
-    # logging.debug(num.groups())
-    # logging.info(len(num.groups()))
-    # logging.info(num.group(0))
+        # get Link number
+        # WE might not need this
+        # TODO, CHANGE THIS, it should work for 1, 2, 3, 4, etc digit nums
+        linkNum = re.compile(r'/xkcd.com/(\d*)/')
+        num = linkNum.search(parse_html.getText())
+        # logging.debug(num.groups())
+        # logging.info(len(num.groups()))
+        # logging.info(num.group(0))
 
-    # logging.info("Outside the parse_site function")
-    # from num.group(1) we get the current imageNumber
-    # img src is the downloadable img src of the curPage
-    # prev src points to the url of the previous page
-    return img_src, prev_src.strip("/"), num.group(1)
+        # logging.info("Outside the parse_site function")
+        # from num.group(1) we get the current imageNumber
+        # img src is the downloadable img src of the curPage
+        # prev src points to the url of the previous page
+        return img_src, prev_src.strip("/"), num.group(1)
+    except IndexError as e:
+        logging.debug("Comic does not exist")
+        return -1, -1, -1
 
 
 # downloadas the comic from taking pic_url and pic_num as input

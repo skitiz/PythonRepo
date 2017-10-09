@@ -63,10 +63,12 @@ if '-s' in sys.argv:
 else:
     # start from starting, FIRST
     pic_url, prev_num, pic_num = downloader.get_schema(url, filename)
-    if pic_num not in downloaded:
-        downloader.download_comic(pic_url, pic_num, folder)
+        if pic_num not in downloaded:
+            downloader.download_comic(pic_url, pic_num, folder)
+        else:
+            logging.info("Not Downloaded "+str(pic_num))
     else:
-        logging.info("Not Downloaded "+str(pic_num))
+        logging.debug("Comic does not exist")
 # NOTE, from here we get pic_num properly so use that ahead
 pic_num = int(pic_num)
 
@@ -86,8 +88,12 @@ for pnum in range(pic_num, end_num, -1):
         logging.info("Downloading "+snum)
         url = downloader.site_join(snum)
         pic_url, prev_num, pic_num = downloader.get_schema(url, filename)
-        downloader.download_comic(pic_url, pic_num, folder)
-        logging.info("Finished download "+snum+"\n")
+        if pic_url is not -1:
+            downloader.download_comic(pic_url, pic_num, folder)
+            logging.info("Finished download "+snum+"\n")
+        else:
+            print("Comic does not exist")
+            continue
         # NOTE, We do not use prev_num since we are manually checking
     else:
         logging.info("Already downloaded "+snum)
