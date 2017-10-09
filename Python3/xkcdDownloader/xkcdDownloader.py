@@ -37,7 +37,9 @@ def get_site(url, filename):
 # pic_url, prev_num, pic_num
 def parse_site(filename):
     # logging.info("Inside parse_site function")
-    parse_html = bs4.BeautifulSoup(open(filename), 'html.parser')
+    read_d = open(filename, 'rb')
+    parse_html = bs4.BeautifulSoup(read_d.read(),
+                                   'html.parser')
 
     # get src
     find_img = parse_html.select('#comic img')[0].attrs
