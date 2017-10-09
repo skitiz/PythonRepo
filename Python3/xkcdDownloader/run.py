@@ -27,10 +27,12 @@ if '-vf' in sys.argv:
                         level=logging.DEBUG,
                         format='%(levelname)s - %(message)s')
 # elif '-v' in sys.argv or len(sys.argv) <= 1:
-elif '-vf' not in sys.argv:  # automatically start the logs
+elif '-vf' not in sys.argv:
+    # automatically start the logs
     logging.basicConfig(level=logging.DEBUG,
                         format='%(levelname)s - %(message)s')
 
+if len(sys.argv) <= 1:
     # this is for people who cannot use command line and run from there
     get_commands = input("Do you want to input commands? y/n\n> ")
     if get_commands is 'y':
