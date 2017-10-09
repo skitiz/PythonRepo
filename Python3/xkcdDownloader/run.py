@@ -35,6 +35,8 @@ elif '-vf' not in sys.argv:
 if len(sys.argv) <= 1:
     # this is for people who cannot use command line and run from there
     get_commands = input("Do you want to input commands? y/n\n> ")
+    # Make the input string lower case so you don't have to add more cases. :)
+    get_commands = get_commands.lower()
     if get_commands is 'y':
         commands = input("ex. -s 100 -e 90\ninput> ")
         command_list = commands.split(" ")
