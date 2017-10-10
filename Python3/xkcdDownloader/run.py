@@ -4,6 +4,8 @@ import logging
 import xkcdDownloader as downloader
 import fileIO
 """
+USE defRun.py, DO NOT USE THIS ANYMORE
+
 -v
     for verbose print to console
 -vf <filename>
@@ -35,9 +37,10 @@ elif '-vf' not in sys.argv:
 if len(sys.argv) <= 1:
     # this is for people who cannot use command line and run from there
     get_commands = input("Do you want to input commands? y/n\n> ")
-    # Make the input string lower case so you don't have to add more cases. :)
-    get_commands = get_commands.lower()
-    if get_commands is 'y':
+    # get_commands = get_commands.lower()
+    # not match happens when we do the above
+    # TODO, find reason why!
+    if get_commands.lower() in 'y':
         commands = input("ex. -s 100 -e 90\ninput> ")
         command_list = commands.split(" ")
         logging.debug(command_list)

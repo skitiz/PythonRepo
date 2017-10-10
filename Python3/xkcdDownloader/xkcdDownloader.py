@@ -17,8 +17,6 @@ CRITICAL
 """
 
 
-# logging.disable(logging.DEBUG)
-
 # get site and input in filename
 def get_site(url, filename):
     # logging.info("Inside the get_site function")
