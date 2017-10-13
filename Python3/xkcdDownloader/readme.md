@@ -48,11 +48,11 @@ To test locally run : `virtualenv <foldername>`
 
 To activate virtualenv:
 
-	* On Mac/Linux : `source <foldername>/bin/activate`
+* On Mac/Linux : `source <foldername>/bin/activate`
 	
-	* On Windows : `cd` to `<foldername>/Scripts` and run `activate`
+* On Windows : `cd` to `<foldername>/Scripts` and run `activate`
 
-	Ensure all dependencies are satisfied. and `python run.py`
+Ensure all dependencies are satisfied. and `python run.py`
 
 # Compilation
 
