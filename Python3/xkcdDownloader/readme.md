@@ -9,7 +9,7 @@ Thereby maximizing efficiency
 
 **If any file is accidentaly deleted just run the script, it will automatically find the file that isn't present and download it**
 
-# Pre-requisites
+# Dependencies
 
 External Modules used are
 * requests
@@ -18,6 +18,12 @@ External Modules used are
 * BeautifulSoup
 	* `pip install beautifulsoup4`
 	* html file parsing
+* virtualenv
+	* `pip install virtualenv`
+	* for local testing
+* Flask
+	* `pip install flask`
+	* Framework for server
 
 # Commands
 
@@ -36,7 +42,16 @@ These are the commands you can use to maximize efficiency
 
 *Verbose mode (-v) to console is on by default*
 
+# Local Development
 
+To test locally run : `virtualenv <foldername>`
+
+To activate virtualenv:
+	* On Mac/Linux : `source <foldername>/bin/activate`
+	* On Windows : `cd` to `<foldername>/Scripts` and run `activate`
+
+	Ensure all dependencies are satisfied. and `python run.py`
+	
 # Compilation
 
 Compiling into one single executable exe file
