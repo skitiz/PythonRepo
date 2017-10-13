@@ -57,4 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+# Folders to ignore
 /env
+/Python3/xkcdDownloader/FlaskApp/Comic
