@@ -55,6 +55,9 @@ if len(sys.argv) <= 1:
         logging.debug(command_list)
         for i in command_list:
             sys.argv.append(i)
+    # Added an exit function if user wants to exit        
+    elif get_commands.lower() in 'n':
+        exit()
 
 if '-nl' in sys.argv:
     logging.disable(logging.CRITICAL)
