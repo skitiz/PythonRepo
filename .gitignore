@@ -60,3 +60,4 @@ typings/
 # Folders to ignore
 /env
 /Python3/xkcdDownloader/FlaskApp/Comic
+/Python3/xkcdDownloader/FlaskApp/my-app
